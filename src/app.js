@@ -21,9 +21,9 @@ app.post("/repositories", (request, response) => {
 
   const repository = { id: uuid(), title, url, techs, likes: 0 };
 
-  /*if (!isUuid(repository.id)) {
+  if (!isUuid(repository.id)) {
     return response.status(404).json({ error: 'Invalid ID' });
-  }*/
+  }
 
   repositories.push(repository);
 
@@ -76,6 +76,8 @@ app.post("/repositories/:id/like", (request, response) => {
   if (repositorieIndex === -1) {
     return response.status(400).json({ error: 'repositorie not found.' });
   }
+
+Console.log(repositorieIndex);
 
   repositories[repositorieIndex].likes++;
 
